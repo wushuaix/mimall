@@ -1,18 +1,17 @@
 <template>
   <div id="app">
-    <div>Hello World</div>
    <router-view></router-view>
   </div>
 </template>
 
 <script>
-
+import storage from './storage'
 export default {
-  name: 'App',
-  components: {
-    
-  }
+mounted() {
+  console.log(storage.getItem('user','age'))
+},
 }
+
 </script>
 
 <style>
