@@ -10,7 +10,7 @@ export default {
         } else {
             let val = this.getStorage()
             val[key] = value
-            window.sessionStorage.setItem(STORAGE_KEY, val)
+            window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify(val))
         }
     },
     //获取某一模块下的属性
@@ -33,6 +33,6 @@ export default {
         } else {
             delete val[key]
         }
-        this.setItem(val)
+        window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify(val))
     }
 }

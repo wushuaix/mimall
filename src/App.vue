@@ -8,7 +8,7 @@
 import storage from './storage'
 export default {
 mounted() {
-  console.log(storage.getItem('user','age'))
+  console.log(storage.getItem('age','user'))
 },
 }
 
