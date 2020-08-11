@@ -20,6 +20,7 @@ axios.interceptors.response.use(function(response) {
     if (result.status === 0) {
         return result.data
     } else if (result.status === 10) {
+        //重定向
         window.href.location = '/#/login'
     } else {
         alert(result.msg)
