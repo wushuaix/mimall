@@ -1,19 +1,22 @@
-let baseUrl;
+let baseURL;
 switch (process.env.NODE_ENV) {
-    case 'development':
-        baseUrl = 'http://dev-mall-pre.springboot.cn/api';
-        break;
-    case 'test':
-        baseUrl = 'http://test-mall-pre.springboot.cn/api';
-        break;
-    case 'prev':
-        baseUrl = 'http://prev-mall-pre.springboot.cn/api';
-        break;
-    case 'product':
-        baseUrl = 'http://mall-pre.springboot.cn/api';
-        break;
-    default:
-        baseUrl = 'http://mall-pre.springboot.cn/api'
-        break;
+  case 'development':
+    baseURL = 'http://dev-mall-pre.springboot.cn/api';
+    break;
+  case 'test':
+    baseURL = 'http://test-mall-pre.springboot.cn/api';
+    break;
+  case 'prev':
+    baseURL = 'http://prev-mall-pre.springboot.cn/api';
+    break;
+  case 'prod':
+    baseURL = 'http://mall-pre.springboot.cn/api';
+    break;
+  default:
+    baseURL = 'http://mall-pre.springboot.cn/api';
+    break;
 }
-export default baseUrl
+
+export default {
+  baseURL
+}

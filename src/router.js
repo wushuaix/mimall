@@ -1,64 +1,68 @@
-import Vue from 'vue';
-import Router from 'vue-router';
-import Home from '@/pages/Home.vue'
-import Index from '@/pages/Index'
-import Product from '@/pages/Product'
-import Detail from '@/pages/Detail'
-import Order from '@/pages/Order'
-import Cart from '@/pages/Cart'
-import OrderConfirm from '@/pages/OrderConfirm'
-import OrderPay from '@/pages/OrderPay'
-import OrderList from '@/pages/OrderList'
-
-Vue.use(Router)
+import Vue from 'vue'
+import Router from 'vue-router'
+import Home from './pages/home'
+import Index from './pages/index'
+Vue.use(Router);
 
 export default new Router({
-    routes: [{
-            path: '/',
-            name: 'home',
-            component: Home,
-            children: [{
-                    path: 'index',
-                    component: Index,
-                    name: 'index'
-                },
-                {
-                    path: 'product/:id',
-                    component: Product,
-                    name: 'product'
-                },
-                {
-                    path: 'detail/:id',
-                    component: Detail,
-                    name: 'detail'
-                }
-            ]
-        },
+  routes:[
+    {
+      path:'/',
+      name:'home',
+      component:Home,
+      redirect:'/index',
+      children:[
         {
-            path: '/cart',
-            name: 'cart',
-            component: Cart
-        },
-        {
-            path: '/order',
-            name: 'order',
-            component: Order,
-            children: [{
-                    path: 'confirm',
-                    name: 'order-confirm',
-                    component: OrderConfirm
-                },
-                {
-                    path: 'pay',
-                    name: 'order-pay',
-                    component: OrderPay
-                },
-                {
-                    path: 'list',
-                    name: 'order-list',
-                    component: OrderList
-                }
-            ]
+          path: '/index',
+          name: 'index',
+          component: Index,
+        }, {
+          path: '/product/:id',
+          name: 'product',
+          component: () => import('./pages/product.vue')
+        }, {
+          path: '/detail/:id',
+          name: 'detail',
+          component: () => import('./pages/detail.vue')
         }
-    ]
-})
+      ]
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('./pages/login.vue')
+    },
+    {
+      path: '/cart',
+      name: 'cart',
+      component: () => import('./pages/cart.vue')
+    },
+    {
+      path: '/order',
+      name: 'order',
+      component: () => import('./pages/order.vue'),
+      children:[
+        {
+          path: 'list',
+          name: 'order-list',
+          component: () => import('./pages/orderList.vue')
+        },
+        {
+          path: 'confirm',
+          name: 'order-confirm',
+          component: () => import('./pages/orderConfirm.vue')
+        },
+        {
+          path: 'pay',
+          name: 'order-pay',
+          component: () => import('./pages/orderPay.vue')
+        },
+        {
+          path: 'alipay',
+          name: 'alipay',
+          component: () => import('./pages/alipay.vue')
+        }
+      ]
+    }
+  ]
+});
